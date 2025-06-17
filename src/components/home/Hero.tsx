@@ -6,11 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useAuth } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
-import { BackgroundBeams } from "@aceternity/ui/background-beams";
-import { SparklesCore } from "@aceternity/ui/sparkles";
-import { HeroHighlight, Highlight } from "@aceternity/ui/hero-highlight";
-import { FloatingNav } from "@aceternity/ui/floating-navbar";
-import { BentoGrid, BentoGridItem } from "@aceternity/ui/bento-grid";
 
 const Hero = () => {
   const { isSignedIn } = useAuth();
@@ -30,92 +25,98 @@ const Hero = () => {
       title: "Access Quality Resources",
       description: "Curated educational content from across the internet",
       icon: <BookOpen className="h-4 w-4 text-neutral-500" />,
-      className: "md:col-span-2",
     },
     {
       title: "Personalized Learning",
       description: "Custom learning paths tailored to your goals",
       icon: <Users className="h-4 w-4 text-neutral-500" />,
-      className: "md:col-span-1",
     },
     {
       title: "Skill Points & Progress",
       description: "Track progress and earn rewards as you learn",
       icon: <Star className="h-4 w-4 text-neutral-500" />,
-      className: "md:col-span-1",
     },
   ];
 
   return (
-    <div className="min-h-screen w-full bg-black relative flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <div className="w-full absolute inset-0 h-screen">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
+    <div className="min-h-screen w-full bg-black relative flex flex-col items-center justify-center overflow-hidden">
+      {/* Animated background particles */}
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-50"></div>
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 2}s`,
+            }}
+          >
+            <div className="w-1 h-1 bg-white rounded-full opacity-60"></div>
+          </div>
+        ))}
       </div>
       
       <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 lg:pt-40 lg:pb-32 z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <HeroHighlight>
-            <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
-              <div className="inline-flex items-center px-3 py-1 mb-4 md:mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium animate-fade-in">
-                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
-                <span>Personalized Learning Platform</span>
-              </div>
-              
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 font-display leading-tight text-white">
-                <span className="relative inline-block animate-slide-in">Learn anything.</span> <br className="hidden sm:block" />
-                <Highlight className="text-black dark:text-white">
-                  Track your progress.
-                </Highlight>
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6 md:mb-8 animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.2s" }}>
-                Access high-quality best educational resources from whole internet, build personalized learning paths, and track your skills development all in one place.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.3s" }}>
-                {isSignedIn ? (
-                  <Button 
-                    onClick={handleDashboardNavigation} 
-                    size="lg" 
-                    className="w-full sm:w-auto group transition-all bg-white text-black hover:bg-gray-100 text-base sm:text-lg px-6 py-3 font-semibold"
-                  >
-                    Your Learning Dashboard 
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
-                  </Button>
-                ) : (
-                  <Button 
-                    onClick={handleJoinWaitlist} 
-                    size="lg" 
-                    className="w-full sm:w-auto group transition-all bg-white text-black hover:bg-gray-100 text-base sm:text-lg px-6 py-3 font-semibold"
-                  >
-                    Join the Waitlist 
-                    <UserPlus className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
-                  </Button>
-                )}
-              </div>
+          <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
+            <div className="inline-flex items-center px-3 py-1 mb-4 md:mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium animate-fade-in">
+              <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+              <span>Personalized Learning Platform</span>
             </div>
-          </HeroHighlight>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 font-display leading-tight text-white">
+              <span className="relative inline-block animate-slide-in">Learn anything.</span> <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Track your progress.
+              </span>
+            </h1>
+            
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6 md:mb-8 animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.2s" }}>
+              Access high-quality best educational resources from whole internet, build personalized learning paths, and track your skills development all in one place.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.3s" }}>
+              {isSignedIn ? (
+                <Button 
+                  onClick={handleDashboardNavigation} 
+                  size="lg" 
+                  className="w-full sm:w-auto group transition-all bg-white text-black hover:bg-gray-100 text-base sm:text-lg px-6 py-3 font-semibold"
+                >
+                  Your Learning Dashboard 
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
+                </Button>
+              ) : (
+                <Button 
+                  onClick={handleJoinWaitlist} 
+                  size="lg" 
+                  className="w-full sm:w-auto group transition-all bg-white text-black hover:bg-gray-100 text-base sm:text-lg px-6 py-3 font-semibold"
+                >
+                  Join the Waitlist 
+                  <UserPlus className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
+                </Button>
+              )}
+            </div>
+          </div>
           
           <div className="max-w-5xl mx-auto relative px-4 sm:px-0 mb-16 sm:mb-20 md:mb-24">
-            <BentoGrid className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               {features.map((item, i) => (
-                <BentoGridItem
-                  key={i}
-                  title={item.title}
-                  description={item.description}
-                  icon={item.icon}
-                  className={`${item.className} bg-white/10 backdrop-blur-md border border-white/20`}
-                />
+                <Card key={i} className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all group">
+                  <CardContent className="p-4 sm:p-6 text-center">
+                    <div className="mb-3 flex justify-center">
+                      <div className="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 text-white">{item.title}</h3>
+                    <p className="text-sm text-gray-300">{item.description}</p>
+                  </CardContent>
+                </Card>
               ))}
-            </BentoGrid>
+            </div>
           </div>
           
           {/* Why Learn From This Platform? section */}
@@ -278,8 +279,6 @@ const Hero = () => {
           </div>
         </div>
       </section>
-      
-      <BackgroundBeams />
     </div>
   );
 };
