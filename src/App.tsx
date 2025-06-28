@@ -15,6 +15,7 @@ import OnboardingExperience from "./pages/onboarding/OnboardingExperience";
 import CourseDashboard from "./pages/course/CourseDashboard";
 import Dashboard from "./pages/Dashboard";
 import Resources from "./pages/Resources";
+import Loading from "./pages/Loading";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import { useState } from "react";
 import SignInPage from "./routes/sign-in";
@@ -84,6 +85,13 @@ const App = () => {
               <Route path="/signup/*" element={
                 <ErrorBoundary>
                   <SignUpPage />
+                </ErrorBoundary>
+              } />
+              
+              {/* Loading screen */}
+              <Route path="/loading" element={
+                <ErrorBoundary>
+                  <Loading />
                 </ErrorBoundary>
               } />
               

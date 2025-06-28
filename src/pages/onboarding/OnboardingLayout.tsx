@@ -62,14 +62,15 @@ const OnboardingLayout = () => {
     if (!canContinue) return;
     
     if (isLastStep) {
-      // If this is the last step, finish onboarding and navigate to specific course path
+      // If this is the last step, finish onboarding and navigate to loading screen
       const { learningGoal, timeCommitment, experienceLevel } = onboardingData;
       const coursePath = generateCourseRoute(learningGoal, timeCommitment, experienceLevel);
       
       console.log('Onboarding complete with data:', onboardingData);
-      console.log('Navigating to course path:', coursePath);
+      console.log('Course path will be:', coursePath);
       
-      navigate(coursePath);
+      // Navigate to loading screen with course path as state
+      navigate('/loading', { state: { coursePath } });
       return;
     }
     
