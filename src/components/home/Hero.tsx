@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
           <div className="inline-flex items-center px-3 py-1 mb-4 md:mb-6 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium animate-fade-in backdrop-blur-sm border border-primary/20">
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
-            <span>Personalized Learning Platform</span>
+            <span>Free Personalized Learning Platform</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 font-display leading-tight">
